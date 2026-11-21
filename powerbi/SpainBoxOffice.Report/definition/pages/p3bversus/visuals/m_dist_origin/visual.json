@@ -1,0 +1,124 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.4.0/schema.json",
+  "name": "m_dist_origin",
+  "position": {
+    "x": 656,
+    "y": 410,
+    "z": 8000,
+    "width": 600,
+    "height": 276,
+    "tabOrder": 8000
+  },
+  "visual": {
+    "visualType": "pivotTable",
+    "drillFilterOtherVisuals": true,
+    "query": {
+      "queryState": {
+        "Rows": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "dim_distributor"
+                    }
+                  },
+                  "Property": "distributor_type"
+                }
+              },
+              "queryRef": "dim_distributor.distributor_type",
+              "nativeQueryRef": "distributor_type"
+            }
+          ]
+        },
+        "Columns": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "dim_film"
+                    }
+                  },
+                  "Property": "origin"
+                }
+              },
+              "queryRef": "dim_film.origin",
+              "nativeQueryRef": "origin"
+            }
+          ]
+        },
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "dim_film"
+                    }
+                  },
+                  "Property": "New Releases"
+                }
+              },
+              "queryRef": "dim_film.New Releases",
+              "nativeQueryRef": "New Releases"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "dim_film"
+                    }
+                  },
+                  "Property": "Release Gross"
+                }
+              },
+              "queryRef": "dim_film.Release Gross",
+              "nativeQueryRef": "Release Gross"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "dim_film"
+                    }
+                  },
+                  "Property": "Hit Rate (1M+)"
+                }
+              },
+              "queryRef": "dim_film.Hit Rate (1M+)",
+              "nativeQueryRef": "Hit Rate (1M+)"
+            }
+          ]
+        }
+      }
+    },
+    "visualContainerObjects": {
+      "title": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Who releases Spanish films? Majors vs independents'"
+                }
+              }
+            }
+          }
+        }
+      ]
+    }
+  }
+}

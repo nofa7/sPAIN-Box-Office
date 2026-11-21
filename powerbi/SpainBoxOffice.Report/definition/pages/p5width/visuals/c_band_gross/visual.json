@@ -1,0 +1,79 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.4.0/schema.json",
+  "name": "c_band_gross",
+  "position": {
+    "x": 24,
+    "y": 96,
+    "z": 5000,
+    "width": 616,
+    "height": 290,
+    "tabOrder": 5000
+  },
+  "visual": {
+    "visualType": "clusteredColumnChart",
+    "drillFilterOtherVisuals": true,
+    "query": {
+      "queryState": {
+        "Category": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "dim_film"
+                    }
+                  },
+                  "Property": "opening_cinemas_band"
+                }
+              },
+              "queryRef": "dim_film.opening_cinemas_band",
+              "nativeQueryRef": "opening_cinemas_band",
+              "displayName": "Opening width (cinemas)"
+            }
+          ]
+        },
+        "Y": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "dim_film"
+                    }
+                  },
+                  "Property": "Median Film Gross"
+                }
+              },
+              "queryRef": "dim_film.Median Film Gross",
+              "nativeQueryRef": "Median Film Gross"
+            }
+          ]
+        }
+      }
+    },
+    "visualContainerObjects": {
+      "title": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Median lifetime gross by opening width (cinemas)'"
+                }
+              }
+            }
+          }
+        }
+      ]
+    }
+  }
+}

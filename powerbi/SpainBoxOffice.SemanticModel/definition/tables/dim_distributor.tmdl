@@ -1,0 +1,30 @@
+table dim_distributor
+	lineageTag: 1324d52b-2e49-5818-91fa-c7a286b0ae19
+
+	column distributor
+		dataType: string
+		lineageTag: aac30c09-b3fc-5945-8dfc-9d3d23306122
+		summarizeBy: none
+		sourceColumn: distributor
+
+		annotation SummarizationSetBy = Automatic
+
+	column distributor_type
+		dataType: string
+		lineageTag: d523c19a-2296-5e24-87f5-2c4140551ff5
+		summarizeBy: none
+		sourceColumn: distributor_type
+
+		annotation SummarizationSetBy = Automatic
+
+	partition dim_distributor = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(File.Contents(DataFolder & "dim_distributor.csv"), [Delimiter = ",", Encoding = 65001, QuoteStyle = QuoteStyle.Csv]),
+				    Promoted = Table.PromoteHeaders(Source, [PromoteAllScalars = true]),
+				    Typed = Table.TransformColumnTypes(Promoted, {{"distributor", type text}, {"distributor_type", type text}}, "en-US")
+				in
+				    Typed
+
+	annotation PBI_ResultType = Table

@@ -1,0 +1,138 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.4.0/schema.json",
+  "name": "m_season",
+  "position": {
+    "x": 24,
+    "y": 400,
+    "z": 7000,
+    "width": 760,
+    "height": 296,
+    "tabOrder": 7000
+  },
+  "visual": {
+    "visualType": "pivotTable",
+    "drillFilterOtherVisuals": true,
+    "query": {
+      "queryState": {
+        "Rows": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "dim_film"
+                    }
+                  },
+                  "Property": "release_season"
+                }
+              },
+              "queryRef": "dim_film.release_season",
+              "nativeQueryRef": "release_season"
+            }
+          ]
+        },
+        "Columns": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "dim_film"
+                    }
+                  },
+                  "Property": "origin"
+                }
+              },
+              "queryRef": "dim_film.origin",
+              "nativeQueryRef": "origin"
+            }
+          ]
+        },
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "dim_film"
+                    }
+                  },
+                  "Property": "New Releases"
+                }
+              },
+              "queryRef": "dim_film.New Releases",
+              "nativeQueryRef": "New Releases"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "dim_film"
+                    }
+                  },
+                  "Property": "Median Film Gross"
+                }
+              },
+              "queryRef": "dim_film.Median Film Gross",
+              "nativeQueryRef": "Median Film Gross"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "dim_film"
+                    }
+                  },
+                  "Property": "Hit Rate (1M+)"
+                }
+              },
+              "queryRef": "dim_film.Hit Rate (1M+)",
+              "nativeQueryRef": "Hit Rate (1M+)"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "dim_film"
+                    }
+                  },
+                  "Property": "Median Legs"
+                }
+              },
+              "queryRef": "dim_film.Median Legs",
+              "nativeQueryRef": "Median Legs"
+            }
+          ]
+        }
+      }
+    },
+    "visualContainerObjects": {
+      "title": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Release window scorecard (new releases)'"
+                }
+              }
+            }
+          }
+        }
+      ]
+    }
+  }
+}

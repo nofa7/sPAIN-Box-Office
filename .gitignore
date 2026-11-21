@@ -1,0 +1,23 @@
+# Raw ICAA PDFs (154 MB): re-download with `py scripts/01_download_icaa.py`.
+# The manifest (URL + download time of every file) is kept for traceability.
+data/raw/icaa/**/*.pdf
+!data/raw/icaa/manifest.csv
+
+# Course brief (third-party material) and any other PDF
+*.pdf
+
+# OS / editor
+desktop.ini
+Thumbs.db
+.DS_Store
+.vscode/
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+
+# Power BI local cache and user settings
+**/.pbi/localSettings.json
+**/.pbi/cache.abf
+*.abf

@@ -1,0 +1,102 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.4.0/schema.json",
+  "name": "t_band",
+  "position": {
+    "x": 800,
+    "y": 400,
+    "z": 8000,
+    "width": 456,
+    "height": 296,
+    "tabOrder": 8000
+  },
+  "visual": {
+    "visualType": "tableEx",
+    "drillFilterOtherVisuals": true,
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "dim_film"
+                    }
+                  },
+                  "Property": "opening_cinemas_band"
+                }
+              },
+              "queryRef": "dim_film.opening_cinemas_band",
+              "nativeQueryRef": "opening_cinemas_band"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "dim_film"
+                    }
+                  },
+                  "Property": "New Releases"
+                }
+              },
+              "queryRef": "dim_film.New Releases",
+              "nativeQueryRef": "New Releases"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "dim_film"
+                    }
+                  },
+                  "Property": "Median Opening per Cinema"
+                }
+              },
+              "queryRef": "dim_film.Median Opening per Cinema",
+              "nativeQueryRef": "Median Opening per Cinema"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "dim_film"
+                    }
+                  },
+                  "Property": "Hit Rate (1M+)"
+                }
+              },
+              "queryRef": "dim_film.Hit Rate (1M+)",
+              "nativeQueryRef": "Hit Rate (1M+)"
+            }
+          ]
+        }
+      }
+    },
+    "visualContainerObjects": {
+      "title": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Width bands summary'"
+                }
+              }
+            }
+          }
+        }
+      ]
+    }
+  }
+}

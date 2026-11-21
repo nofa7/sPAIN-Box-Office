@@ -1,0 +1,96 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.4.0/schema.json",
+  "name": "c_decay",
+  "position": {
+    "x": 656,
+    "y": 96,
+    "z": 5000,
+    "width": 600,
+    "height": 290,
+    "tabOrder": 5000
+  },
+  "visual": {
+    "visualType": "lineChart",
+    "drillFilterOtherVisuals": true,
+    "query": {
+      "queryState": {
+        "Category": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "fact_weekend_top25"
+                    }
+                  },
+                  "Property": "weeks_on_release"
+                }
+              },
+              "queryRef": "fact_weekend_top25.weeks_on_release",
+              "nativeQueryRef": "weeks_on_release"
+            }
+          ]
+        },
+        "Y": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "fact_weekend_top25"
+                    }
+                  },
+                  "Property": "Median Week-over-Week Change"
+                }
+              },
+              "queryRef": "fact_weekend_top25.Median Week-over-Week Change",
+              "nativeQueryRef": "Median Week-over-Week Change"
+            }
+          ]
+        },
+        "Series": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "dim_film"
+                    }
+                  },
+                  "Property": "origin"
+                }
+              },
+              "queryRef": "dim_film.origin",
+              "nativeQueryRef": "origin"
+            }
+          ]
+        }
+      }
+    },
+    "visualContainerObjects": {
+      "title": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Weekly drop rate by week on release (lower drop = longer legs)'"
+                }
+              }
+            }
+          }
+        }
+      ]
+    }
+  }
+}

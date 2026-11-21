@@ -1,0 +1,118 @@
+table fact_annual_spanish
+	lineageTag: 6ee878c9-922b-5fa9-ba26-932717c74fff
+
+	/// All Spanish films on release in the year (ICAA annual lists)
+	measure 'Spanish Cinema Gross' = SUM(fact_annual_spanish[gross_eur])
+		formatString: €#,0
+		displayFolder: KPIs
+		lineageTag: aaa837cd-5fa4-5433-8f67-276b89196a1e
+
+	/// Admissions, Spanish films
+	measure 'Spanish Cinema Admissions' = SUM(fact_annual_spanish[admissions])
+		formatString: #,0
+		displayFolder: KPIs
+		lineageTag: e938cea7-0e79-5441-b144-93ef91d83b22
+
+	/// Distinct Spanish titles
+	measure 'Spanish Films on Release' = DISTINCTCOUNT(fact_annual_spanish[title])
+		formatString: #,0
+		displayFolder: KPIs
+		lineageTag: b5161c11-0f47-511d-b2f7-a8cc7907c41e
+
+	column year
+		dataType: int64
+		lineageTag: 6e4042c1-07a2-5d4f-ba4e-b4e5a0b2b8e7
+		summarizeBy: none
+		sourceColumn: year
+
+		annotation SummarizationSetBy = Automatic
+
+	column rank
+		dataType: int64
+		lineageTag: cbe5f53f-db57-558e-8a61-b739994032c2
+		summarizeBy: none
+		sourceColumn: rank
+
+		annotation SummarizationSetBy = Automatic
+
+	column title
+		dataType: string
+		lineageTag: 4087779b-df4e-509c-9000-65164fb75e50
+		summarizeBy: none
+		sourceColumn: title
+
+		annotation SummarizationSetBy = Automatic
+
+	column distributor
+		dataType: string
+		lineageTag: 0321be5a-8e93-5065-a2c2-1e232e868ad6
+		summarizeBy: none
+		sourceColumn: distributor
+
+		annotation SummarizationSetBy = Automatic
+
+	column release_date
+		dataType: dateTime
+		formatString: yyyy-mm-dd
+		lineageTag: 8b6476df-b442-5c49-8526-53b20e5f9077
+		summarizeBy: none
+		sourceColumn: release_date
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column released_in_year
+		dataType: boolean
+		lineageTag: f054312b-4a39-5006-9203-9fe08a0102b0
+		summarizeBy: none
+		sourceColumn: released_in_year
+
+		annotation SummarizationSetBy = Automatic
+
+	column gross_eur
+		dataType: int64
+		formatString: #,0
+		lineageTag: f118c503-5e6a-53e5-9656-44035f1cdb56
+		summarizeBy: sum
+		sourceColumn: gross_eur
+
+		annotation SummarizationSetBy = Automatic
+
+	column admissions
+		dataType: int64
+		formatString: #,0
+		lineageTag: 293e8025-be3a-58c3-a877-ae4d8a553639
+		summarizeBy: sum
+		sourceColumn: admissions
+
+		annotation SummarizationSetBy = Automatic
+
+	column is_partial_year
+		dataType: boolean
+		lineageTag: ae7e715c-bec1-56a0-b7eb-f1b16c944271
+		summarizeBy: none
+		sourceColumn: is_partial_year
+
+		annotation SummarizationSetBy = Automatic
+
+	column source_file
+		dataType: string
+		isHidden
+		lineageTag: a93cfb9a-9c18-5bdf-8e65-891afae22146
+		summarizeBy: none
+		sourceColumn: source_file
+
+		annotation SummarizationSetBy = Automatic
+
+	partition fact_annual_spanish = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(File.Contents(DataFolder & "fact_annual_spanish.csv"), [Delimiter = ",", Encoding = 65001, QuoteStyle = QuoteStyle.Csv]),
+				    Promoted = Table.PromoteHeaders(Source, [PromoteAllScalars = true]),
+				    Typed = Table.TransformColumnTypes(Promoted, {{"year", Int64.Type}, {"rank", Int64.Type}, {"title", type text}, {"distributor", type text}, {"release_date", type date}, {"released_in_year", type logical}, {"gross_eur", Int64.Type}, {"admissions", Int64.Type}, {"is_partial_year", type logical}, {"source_file", type text}}, "en-US")
+				in
+				    Typed
+
+	annotation PBI_ResultType = Table

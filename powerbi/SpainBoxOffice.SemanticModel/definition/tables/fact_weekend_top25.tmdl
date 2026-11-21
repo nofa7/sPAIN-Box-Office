@@ -1,0 +1,224 @@
+table fact_weekend_top25
+	lineageTag: 9450a407-61b5-50fe-bbe3-859d954a93ba
+
+	/// Weekend box office (EUR), Top 25 films
+	measure 'Total Gross' = SUM(fact_weekend_top25[gross_eur])
+		formatString: €#,0
+		displayFolder: KPIs
+		lineageTag: 597f38ca-4903-5540-acd2-e1b22b044586
+
+	/// Tickets sold, Top 25 films
+	measure 'Total Admissions' = SUM(fact_weekend_top25[admissions])
+		formatString: #,0
+		displayFolder: KPIs
+		lineageTag: dae8e352-757e-55d8-acf9-08d973ec7601
+
+	/// Gross / admissions
+	measure 'Avg Ticket Price' = DIVIDE([Total Gross], [Total Admissions])
+		formatString: €0.00
+		displayFolder: KPIs
+		lineageTag: c32db662-d204-5816-ba96-09679d71a2bd
+
+	/// Weekends with data
+	measure Weekends = DISTINCTCOUNT(fact_weekend_top25[weekend_start])
+		formatString: #,0
+		displayFolder: KPIs
+		lineageTag: 2c20155b-90a7-541b-acf2-4ed659eba3f3
+
+	/// Average Top 25 gross per weekend
+	measure 'Avg Weekend Gross' = DIVIDE([Total Gross], [Weekends])
+		formatString: €#,0
+		displayFolder: KPIs
+		lineageTag: 0613dbb0-d210-5e93-bf46-ef33edc7440e
+
+	/// Distinct films in the Top 25
+	measure 'Films on Screen' = DISTINCTCOUNT(fact_weekend_top25[film_id])
+		formatString: #,0
+		displayFolder: KPIs
+		lineageTag: c9d3ed25-aea4-5430-b8e4-d3a9b0d7685a
+
+	/// Gross of Spanish films
+	measure 'Spanish Gross' = CALCULATE([Total Gross], dim_film[origin] = "Spanish")
+		formatString: €#,0
+		displayFolder: KPIs
+		lineageTag: 582be61f-b109-5bf5-a55c-e183cdb70c3b
+
+	/// Share of gross from Spanish films
+	measure 'Spanish Share' = DIVIDE([Spanish Gross], [Total Gross])
+		formatString: 0.0%
+		displayFolder: KPIs
+		lineageTag: 80f3ba56-c410-53fa-a2e0-96c8196239fe
+
+	/// Share of gross released by independent distributors
+	measure 'Independent Share' = DIVIDE(CALCULATE([Total Gross], dim_distributor[distributor_type] = "Independent"), [Total Gross])
+		formatString: 0.0%
+		displayFolder: KPIs
+		lineageTag: bdf2e6db-b78e-53a7-897f-a5b61895ced1
+
+	/// Share of gross released by the Hollywood majors
+	measure 'Major Studio Share' = DIVIDE(CALCULATE([Total Gross], dim_distributor[distributor_type] = "Major studio"), [Total Gross])
+		formatString: 0.0%
+		displayFolder: KPIs
+		lineageTag: 729dddac-14dc-5031-894d-dea0a76b0ec9
+
+	/// Same period last year
+	measure 'Gross PY' = CALCULATE([Total Gross], DATEADD(dim_date[date], -1, YEAR))
+		formatString: €#,0
+		displayFolder: KPIs
+		lineageTag: 6d65bae4-93de-5721-9cf9-06a9e1fc53ff
+
+	/// Change vs same period last year
+	measure 'Gross YoY %' =
+			VAR _prev = [Gross PY]
+			RETURN
+			    IF(NOT ISBLANK(_prev), DIVIDE([Total Gross] - _prev, _prev))
+		formatString: +0.0%;-0.0%;0.0%
+		displayFolder: KPIs
+		lineageTag: c004bf6b-ba64-5d8b-ac2e-0b440b21b065
+
+	/// Median weekend-to-weekend gross change (drop rate)
+	measure 'Median Week-over-Week Change' = DIVIDE(MEDIAN(fact_weekend_top25[gross_pct_change]), 100)
+		formatString: +0%;-0%;0%
+		displayFolder: KPIs
+		lineageTag: 0682572d-e7bf-587b-b8b5-b02093d48f81
+
+	/// Concentration: share of gross from the 10 biggest films in context
+	measure 'Top 10 Films Share' =
+			VAR _top = TOPN(10, VALUES(fact_weekend_top25[film_id]), [Total Gross])
+			RETURN
+			    DIVIDE(CALCULATE([Total Gross], _top), [Total Gross])
+		formatString: 0.0%
+		displayFolder: KPIs
+		lineageTag: d4cd8e71-5e31-5417-a2bb-db2f696ebba4
+
+	column film_id
+		dataType: string
+		lineageTag: 54c73afc-917d-53a9-beca-cd2c2d748714
+		summarizeBy: none
+		sourceColumn: film_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column weekend_start
+		dataType: dateTime
+		formatString: yyyy-mm-dd
+		lineageTag: 69b7cfb2-167e-58b6-b18f-bbc032a8c6dc
+		summarizeBy: none
+		sourceColumn: weekend_start
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column rank
+		dataType: int64
+		lineageTag: 328a9318-7591-5e94-a3c2-acee11de6e8b
+		summarizeBy: none
+		sourceColumn: rank
+
+		annotation SummarizationSetBy = Automatic
+
+	column weeks_on_release
+		dataType: int64
+		lineageTag: 0dbe8964-b1cf-5daa-8f65-4337042b9597
+		summarizeBy: none
+		sourceColumn: weeks_on_release
+
+		annotation SummarizationSetBy = Automatic
+
+	column cinemas
+		dataType: int64
+		lineageTag: 3607b1d9-f412-5186-beeb-291ac89de771
+		summarizeBy: none
+		sourceColumn: cinemas
+
+		annotation SummarizationSetBy = Automatic
+
+	column screens
+		dataType: double
+		lineageTag: 4d6eba32-ff2d-536b-80de-5672afd143b0
+		summarizeBy: none
+		sourceColumn: screens
+
+		annotation SummarizationSetBy = Automatic
+
+	column gross_eur
+		dataType: int64
+		formatString: #,0
+		lineageTag: 60ab78d9-78d8-5811-9926-bfb66afc245d
+		summarizeBy: sum
+		sourceColumn: gross_eur
+
+		annotation SummarizationSetBy = Automatic
+
+	column admissions
+		dataType: double
+		formatString: #,0
+		lineageTag: 996cdd93-2f94-5fff-828e-b2be27e1536a
+		summarizeBy: sum
+		sourceColumn: admissions
+
+		annotation SummarizationSetBy = Automatic
+
+	column admissions_imputed
+		dataType: boolean
+		lineageTag: 7da93a18-4652-5f7f-8ed7-ab098f2d2fda
+		summarizeBy: none
+		sourceColumn: admissions_imputed
+
+		annotation SummarizationSetBy = Automatic
+
+	column gross_pct_change
+		dataType: double
+		lineageTag: a654b44f-dab7-5fc1-8bb2-08e7f0786b5a
+		summarizeBy: none
+		sourceColumn: gross_pct_change
+
+		annotation SummarizationSetBy = Automatic
+
+	column admissions_pct_change
+		dataType: double
+		lineageTag: 2b4f12f1-4e3f-5b87-bb00-f788d39d81e4
+		summarizeBy: none
+		sourceColumn: admissions_pct_change
+
+		annotation SummarizationSetBy = Automatic
+
+	column gross_cum_eur
+		dataType: int64
+		formatString: #,0
+		lineageTag: f66105d9-c80a-5971-af07-a325e310db28
+		summarizeBy: sum
+		sourceColumn: gross_cum_eur
+
+		annotation SummarizationSetBy = Automatic
+
+	column admissions_cum
+		dataType: int64
+		formatString: #,0
+		lineageTag: ca996584-b9ac-56df-b2b7-dd333e492a9f
+		summarizeBy: sum
+		sourceColumn: admissions_cum
+
+		annotation SummarizationSetBy = Automatic
+
+	column source_file
+		dataType: string
+		isHidden
+		lineageTag: b1cf86c2-1b1f-5954-8367-bc6b53631488
+		summarizeBy: none
+		sourceColumn: source_file
+
+		annotation SummarizationSetBy = Automatic
+
+	partition fact_weekend_top25 = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(File.Contents(DataFolder & "fact_weekend_top25.csv"), [Delimiter = ",", Encoding = 65001, QuoteStyle = QuoteStyle.Csv]),
+				    Promoted = Table.PromoteHeaders(Source, [PromoteAllScalars = true]),
+				    Typed = Table.TransformColumnTypes(Promoted, {{"film_id", type text}, {"weekend_start", type date}, {"rank", Int64.Type}, {"weeks_on_release", Int64.Type}, {"cinemas", Int64.Type}, {"screens", type number}, {"gross_eur", Int64.Type}, {"admissions", type number}, {"admissions_imputed", type logical}, {"gross_pct_change", type number}, {"admissions_pct_change", type number}, {"gross_cum_eur", Int64.Type}, {"admissions_cum", Int64.Type}, {"source_file", type text}}, "en-US")
+				in
+				    Typed
+
+	annotation PBI_ResultType = Table

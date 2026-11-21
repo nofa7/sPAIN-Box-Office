@@ -1,0 +1,317 @@
+table dim_film
+	lineageTag: 3db4b2f5-136f-5b48-968e-f2288d843c3d
+
+	/// Films that opened in the Top 25 (excl. re-releases)
+	measure 'New Releases' = COUNTROWS(FILTER(dim_film, dim_film[opened_in_top25] = TRUE() && dim_film[is_rerelease] = FALSE()))
+		formatString: #,0
+		displayFolder: KPIs
+		lineageTag: 39c9019d-32ba-5458-b132-8ee5dc0025ae
+
+	/// Lifetime gross of new releases
+	measure 'Release Gross' = SUMX(FILTER(dim_film, dim_film[opened_in_top25] = TRUE() && dim_film[is_rerelease] = FALSE()), dim_film[total_gross_eur])
+		formatString: €#,0
+		displayFolder: KPIs
+		lineageTag: 8ac21ae6-0a15-55e9-89f3-1b0ddaf3349b
+
+	/// Median opening-weekend gross
+	measure 'Median Opening' = MEDIANX(FILTER(dim_film, dim_film[opened_in_top25] = TRUE() && dim_film[is_rerelease] = FALSE()), dim_film[opening_gross_eur])
+		formatString: €#,0
+		displayFolder: KPIs
+		lineageTag: 8a19b51c-61b7-5050-97f4-9e70bda3b8c4
+
+	/// Median lifetime gross per new release
+	measure 'Median Film Gross' = MEDIANX(FILTER(dim_film, dim_film[opened_in_top25] = TRUE() && dim_film[is_rerelease] = FALSE()), dim_film[total_gross_eur])
+		formatString: €#,0
+		displayFolder: KPIs
+		lineageTag: 2f7e85bf-ccca-5c99-8107-97a67fb1de40
+
+	/// Share of new releases grossing 1M EUR or more
+	measure 'Hit Rate (1M+)' =
+			VAR _hits = COUNTROWS(FILTER(dim_film, dim_film[opened_in_top25] = TRUE() && dim_film[is_rerelease] = FALSE() && dim_film[total_gross_eur] >= 1000000))
+			RETURN
+			    DIVIDE(_hits, [New Releases])
+		formatString: 0.0%
+		displayFolder: KPIs
+		lineageTag: 93d6e58a-9c4c-5c8c-bc3b-41df004fd7b7
+
+	/// Median lifetime gross / opening weekend
+	measure 'Median Legs' = MEDIANX(FILTER(dim_film, dim_film[opened_in_top25] = TRUE() && dim_film[is_rerelease] = FALSE() && NOT ISBLANK(dim_film[legs_multiple])), dim_film[legs_multiple])
+		formatString: 0.00x
+		displayFolder: KPIs
+		lineageTag: b1e0035d-b5d5-5fe1-a538-8c9a0844c1c5
+
+	/// Share of new releases that are Spanish films
+	measure 'Spanish Share of Releases' =
+			VAR _all = CALCULATE([New Releases], REMOVEFILTERS(dim_film[origin]))
+			RETURN
+			    DIVIDE(CALCULATE([New Releases], dim_film[origin] = "Spanish"), _all)
+		formatString: 0.0%
+		displayFolder: KPIs
+		lineageTag: 01e3e9b2-302b-5b29-a509-fde09cbe4e44
+
+	/// Share of new releases' lifetime gross earned by Spanish films
+	measure 'Spanish Share of Release Gross' =
+			VAR _all = CALCULATE([Release Gross], REMOVEFILTERS(dim_film[origin]))
+			RETURN
+			    DIVIDE(CALCULATE([Release Gross], dim_film[origin] = "Spanish"), _all)
+		formatString: 0.0%
+		displayFolder: KPIs
+		lineageTag: b5ed6abf-d339-5866-bc2c-d80fb89434fc
+
+	/// Median opening gross per cinema
+	measure 'Median Opening per Cinema' = MEDIANX(FILTER(dim_film, dim_film[opened_in_top25] = TRUE() && dim_film[is_rerelease] = FALSE() && NOT ISBLANK(dim_film[opening_per_cinema_eur])), dim_film[opening_per_cinema_eur])
+		formatString: €#,0
+		displayFolder: KPIs
+		lineageTag: f5817ab9-1a79-5fb5-aeb9-d0723f6525a9
+
+	column film_id
+		dataType: string
+		lineageTag: 07307275-2524-5f2c-bc47-c601c09cfc8a
+		summarizeBy: none
+		sourceColumn: film_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column title
+		dataType: string
+		lineageTag: e65edcb6-7615-52d0-ad79-945310a4a90f
+		summarizeBy: none
+		sourceColumn: title
+
+		annotation SummarizationSetBy = Automatic
+
+	column original_title
+		dataType: string
+		lineageTag: 1416b3f9-59b5-5229-9d8e-6fb5a729f18d
+		summarizeBy: none
+		sourceColumn: original_title
+
+		annotation SummarizationSetBy = Automatic
+
+	column distributor
+		dataType: string
+		lineageTag: bfa92e41-5b3c-57d9-ab47-a1e02319929b
+		summarizeBy: none
+		sourceColumn: distributor
+
+		annotation SummarizationSetBy = Automatic
+
+	column origin
+		dataType: string
+		lineageTag: b35c5c37-00b7-5b13-89f3-27b77fa048a4
+		summarizeBy: none
+		sourceColumn: origin
+
+		annotation SummarizationSetBy = Automatic
+
+	column release_weekend
+		dataType: dateTime
+		formatString: yyyy-mm-dd
+		lineageTag: 5a1eb3c3-1f7d-5d1e-beb2-4ba3dec7ba92
+		summarizeBy: none
+		sourceColumn: release_weekend
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column release_year
+		dataType: int64
+		lineageTag: 97a82d74-54b6-5690-95be-fb39581a6bdb
+		summarizeBy: none
+		sourceColumn: release_year
+
+		annotation SummarizationSetBy = Automatic
+
+	column release_month_num
+		dataType: int64
+		lineageTag: fedb21d6-5346-589d-b68c-beb99ebc3247
+		summarizeBy: none
+		sourceColumn: release_month_num
+
+		annotation SummarizationSetBy = Automatic
+
+	column release_month
+		dataType: string
+		lineageTag: dc7c390a-75bc-59f9-9ce1-723a11fbbade
+		summarizeBy: none
+		sourceColumn: release_month
+		sortByColumn: release_month_num
+
+		annotation SummarizationSetBy = Automatic
+
+	column release_season
+		dataType: string
+		lineageTag: 291331ba-d913-589a-b22e-110baf45198d
+		summarizeBy: none
+		sourceColumn: release_season
+
+		annotation SummarizationSetBy = Automatic
+
+	column is_rerelease
+		dataType: boolean
+		lineageTag: 26421625-e138-54ea-93cc-8566f9a6e86e
+		summarizeBy: none
+		sourceColumn: is_rerelease
+
+		annotation SummarizationSetBy = Automatic
+
+	column opened_in_top25
+		dataType: boolean
+		lineageTag: 98b533b0-943f-5366-8cac-e38393694de3
+		summarizeBy: none
+		sourceColumn: opened_in_top25
+
+		annotation SummarizationSetBy = Automatic
+
+	column opening_gross_eur
+		dataType: double
+		formatString: #,0
+		lineageTag: 27affaae-9713-5240-b0a4-4e5ac3cf67ed
+		summarizeBy: sum
+		sourceColumn: opening_gross_eur
+
+		annotation SummarizationSetBy = Automatic
+
+	column opening_admissions
+		dataType: double
+		formatString: #,0
+		lineageTag: ce8b02ce-1923-5faa-92f9-e7ff4a9d4641
+		summarizeBy: sum
+		sourceColumn: opening_admissions
+
+		annotation SummarizationSetBy = Automatic
+
+	column opening_screens
+		dataType: double
+		lineageTag: 8c8cbdba-8549-5acb-909f-477cf08d28d8
+		summarizeBy: none
+		sourceColumn: opening_screens
+
+		annotation SummarizationSetBy = Automatic
+
+	column opening_cinemas
+		dataType: double
+		lineageTag: 49196001-357d-563b-a13b-85ae0c47e74e
+		summarizeBy: none
+		sourceColumn: opening_cinemas
+
+		annotation SummarizationSetBy = Automatic
+
+	column opening_cinemas_band
+		dataType: string
+		lineageTag: bced737d-4c29-506a-a8c7-49c39f420d0e
+		summarizeBy: none
+		sourceColumn: opening_cinemas_band
+
+		annotation SummarizationSetBy = Automatic
+
+	column opening_rank
+		dataType: double
+		lineageTag: 9b6c94fd-48bf-57cc-b929-c78a322f6810
+		summarizeBy: none
+		sourceColumn: opening_rank
+
+		annotation SummarizationSetBy = Automatic
+
+	column opening_per_screen_eur
+		dataType: double
+		lineageTag: 268bea8d-8dc3-5afa-95ca-77fda19d7179
+		summarizeBy: none
+		sourceColumn: opening_per_screen_eur
+
+		annotation SummarizationSetBy = Automatic
+
+	column opening_per_cinema_eur
+		dataType: double
+		lineageTag: 7d1bd8c5-da16-52a1-b06e-7143d31b5f3c
+		summarizeBy: none
+		sourceColumn: opening_per_cinema_eur
+
+		annotation SummarizationSetBy = Automatic
+
+	column total_gross_eur
+		dataType: int64
+		formatString: #,0
+		lineageTag: 8d2b30b3-f543-53f6-ab1b-e04cee0f27ce
+		summarizeBy: sum
+		sourceColumn: total_gross_eur
+
+		annotation SummarizationSetBy = Automatic
+
+	column total_admissions
+		dataType: int64
+		formatString: #,0
+		lineageTag: a838b55f-1301-5021-89fc-45a46f667319
+		summarizeBy: sum
+		sourceColumn: total_admissions
+
+		annotation SummarizationSetBy = Automatic
+
+	column avg_ticket_eur
+		dataType: double
+		lineageTag: add2f17a-7333-55f1-bd4f-fee87a569290
+		summarizeBy: none
+		sourceColumn: avg_ticket_eur
+
+		annotation SummarizationSetBy = Automatic
+
+	column legs_multiple
+		dataType: double
+		lineageTag: b9a7b95e-2543-5c1c-b7c9-bf275d2973b7
+		summarizeBy: none
+		sourceColumn: legs_multiple
+
+		annotation SummarizationSetBy = Automatic
+
+	column weeks_in_top25
+		dataType: int64
+		lineageTag: 594a23b7-a135-5e40-90fe-4366cd2fa4b0
+		summarizeBy: none
+		sourceColumn: weeks_in_top25
+
+		annotation SummarizationSetBy = Automatic
+
+	column last_weeks_on_release
+		dataType: int64
+		lineageTag: cfb18bdb-6f2a-52d5-ae05-fc0b5c7c400a
+		summarizeBy: none
+		sourceColumn: last_weeks_on_release
+
+		annotation SummarizationSetBy = Automatic
+
+	column peak_screens
+		dataType: double
+		lineageTag: e6ba6f32-4ac9-5f05-9b92-ba46d7c8c534
+		summarizeBy: none
+		sourceColumn: peak_screens
+
+		annotation SummarizationSetBy = Automatic
+
+	column best_rank
+		dataType: int64
+		lineageTag: 83f616fe-e9df-5d58-aa55-238b643afdaa
+		summarizeBy: none
+		sourceColumn: best_rank
+
+		annotation SummarizationSetBy = Automatic
+
+	column gross_band
+		dataType: string
+		lineageTag: 6086ac0b-705c-5b6e-90ae-b8b15b58727f
+		summarizeBy: none
+		sourceColumn: gross_band
+
+		annotation SummarizationSetBy = Automatic
+
+	partition dim_film = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(File.Contents(DataFolder & "dim_film.csv"), [Delimiter = ",", Encoding = 65001, QuoteStyle = QuoteStyle.Csv]),
+				    Promoted = Table.PromoteHeaders(Source, [PromoteAllScalars = true]),
+				    Typed = Table.TransformColumnTypes(Promoted, {{"film_id", type text}, {"title", type text}, {"original_title", type text}, {"distributor", type text}, {"origin", type text}, {"release_weekend", type date}, {"release_year", Int64.Type}, {"release_month_num", Int64.Type}, {"release_month", type text}, {"release_season", type text}, {"is_rerelease", type logical}, {"opened_in_top25", type logical}, {"opening_gross_eur", type number}, {"opening_admissions", type number}, {"opening_screens", type number}, {"opening_cinemas", type number}, {"opening_cinemas_band", type text}, {"opening_rank", type number}, {"opening_per_screen_eur", type number}, {"opening_per_cinema_eur", type number}, {"total_gross_eur", Int64.Type}, {"total_admissions", Int64.Type}, {"avg_ticket_eur", type number}, {"legs_multiple", type number}, {"weeks_in_top25", Int64.Type}, {"last_weeks_on_release", Int64.Type}, {"peak_screens", type number}, {"best_rank", Int64.Type}, {"gross_band", type text}}, "en-US")
+				in
+				    Typed
+
+	annotation PBI_ResultType = Table

@@ -1,0 +1,36 @@
+{
+  "name": "SpainBoxOffice",
+  "dataColors": [
+    "#C8102E",
+    "#1F2A44",
+    "#F2A900",
+    "#5B8DB8",
+    "#7A9E7E",
+    "#B07AA1",
+    "#8A93A6",
+    "#E07B53"
+  ],
+  "background": "#FFFFFF",
+  "foreground": "#1F2A44",
+  "tableAccent": "#C8102E",
+  "good": "#2E7D32",
+  "neutral": "#F2A900",
+  "bad": "#C8102E",
+  "textClasses": {
+    "title": {
+      "fontFace": "Segoe UI Semibold",
+      "fontSize": 12,
+      "color": "#1F2A44"
+    },
+    "callout": {
+      "fontFace": "Segoe UI Semibold",
+      "fontSize": 24,
+      "color": "#1F2A44"
+    },
+    "label": {
+      "fontFace": "Segoe UI",
+      "fontSize": 10,
+      "color": "#5B6478"
+    }
+  }
+}

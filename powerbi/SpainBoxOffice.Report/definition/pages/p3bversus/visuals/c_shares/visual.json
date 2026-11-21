@@ -1,0 +1,93 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.4.0/schema.json",
+  "name": "c_shares",
+  "position": {
+    "x": 24,
+    "y": 200,
+    "z": 6000,
+    "width": 616,
+    "height": 270,
+    "tabOrder": 6000
+  },
+  "visual": {
+    "visualType": "clusteredColumnChart",
+    "drillFilterOtherVisuals": true,
+    "query": {
+      "queryState": {
+        "Category": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "dim_film"
+                    }
+                  },
+                  "Property": "release_year"
+                }
+              },
+              "queryRef": "dim_film.release_year",
+              "nativeQueryRef": "release_year",
+              "displayName": "Release year"
+            }
+          ]
+        },
+        "Y": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "dim_film"
+                    }
+                  },
+                  "Property": "Spanish Share of Releases"
+                }
+              },
+              "queryRef": "dim_film.Spanish Share of Releases",
+              "nativeQueryRef": "Spanish Share of Releases"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "dim_film"
+                    }
+                  },
+                  "Property": "Spanish Share of Release Gross"
+                }
+              },
+              "queryRef": "dim_film.Spanish Share of Release Gross",
+              "nativeQueryRef": "Spanish Share of Release Gross"
+            }
+          ]
+        }
+      }
+    },
+    "visualContainerObjects": {
+      "title": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Spanish films: share of releases vs share of gross'"
+                }
+              }
+            }
+          }
+        }
+      ]
+    }
+  }
+}

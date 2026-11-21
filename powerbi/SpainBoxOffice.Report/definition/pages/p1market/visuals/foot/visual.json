@@ -1,0 +1,38 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.4.0/schema.json",
+  "name": "foot",
+  "position": {
+    "x": 24,
+    "y": 690,
+    "z": 14000,
+    "width": 1232,
+    "height": 30,
+    "tabOrder": 14000
+  },
+  "visual": {
+    "visualType": "textbox",
+    "objects": {
+      "general": [
+        {
+          "properties": {
+            "paragraphs": [
+              {
+                "textRuns": [
+                  {
+                    "value": "Source: ICAA / Ministerio de Cultura, weekly Top 25 box office (Comscore-Rentrak), Jan 2020 - Nov 2026. 2026 = year to date.",
+                    "textStyle": {
+                      "fontSize": "8pt",
+                      "fontWeight": "normal",
+                      "color": "#8A93A6"
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

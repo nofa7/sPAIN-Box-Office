@@ -1,0 +1,13 @@
+release_season,origin,films,median_total_k_eur,median_legs,pct_over_1m
+Autumn,Foreign,299,187.0,2.15,27.4
+Autumn,Spanish,164,218.0,2.54,18.9
+Christmas,Foreign,54,462.0,4.29,35.2
+Christmas,Spanish,10,454.0,3.96,30.0
+Easter,Foreign,47,320.0,2.69,27.7
+Easter,Spanish,16,198.0,3.39,18.8
+Spring,Foreign,305,91.0,2.22,20.7
+Spring,Spanish,125,68.0,2.08,8.0
+Summer,Foreign,221,72.0,2.63,23.1
+Summer,Spanish,57,258.0,3.04,28.1
+Winter,Foreign,244,202.0,2.15,23.0
+Winter,Spanish,65,188.0,2.32,29.2

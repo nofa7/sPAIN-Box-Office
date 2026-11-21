@@ -1,0 +1,79 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.4.0/schema.json",
+  "name": "c_band_hit",
+  "position": {
+    "x": 656,
+    "y": 96,
+    "z": 6000,
+    "width": 600,
+    "height": 290,
+    "tabOrder": 6000
+  },
+  "visual": {
+    "visualType": "clusteredColumnChart",
+    "drillFilterOtherVisuals": true,
+    "query": {
+      "queryState": {
+        "Category": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "dim_film"
+                    }
+                  },
+                  "Property": "opening_cinemas_band"
+                }
+              },
+              "queryRef": "dim_film.opening_cinemas_band",
+              "nativeQueryRef": "opening_cinemas_band",
+              "displayName": "Opening width (cinemas)"
+            }
+          ]
+        },
+        "Y": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "dim_film"
+                    }
+                  },
+                  "Property": "Hit Rate (1M+)"
+                }
+              },
+              "queryRef": "dim_film.Hit Rate (1M+)",
+              "nativeQueryRef": "Hit Rate (1M+)"
+            }
+          ]
+        }
+      }
+    },
+    "visualContainerObjects": {
+      "title": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Hit rate (1M EUR+) by opening width'"
+                }
+              }
+            }
+          }
+        }
+      ]
+    }
+  }
+}

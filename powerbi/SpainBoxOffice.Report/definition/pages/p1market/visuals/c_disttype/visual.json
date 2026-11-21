@@ -1,0 +1,78 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.4.0/schema.json",
+  "name": "c_disttype",
+  "position": {
+    "x": 24,
+    "y": 520,
+    "z": 11000,
+    "width": 300,
+    "height": 176,
+    "tabOrder": 11000
+  },
+  "visual": {
+    "visualType": "donutChart",
+    "drillFilterOtherVisuals": true,
+    "query": {
+      "queryState": {
+        "Category": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "dim_distributor"
+                    }
+                  },
+                  "Property": "distributor_type"
+                }
+              },
+              "queryRef": "dim_distributor.distributor_type",
+              "nativeQueryRef": "distributor_type"
+            }
+          ]
+        },
+        "Y": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "fact_weekend_top25"
+                    }
+                  },
+                  "Property": "Total Gross"
+                }
+              },
+              "queryRef": "fact_weekend_top25.Total Gross",
+              "nativeQueryRef": "Total Gross"
+            }
+          ]
+        }
+      }
+    },
+    "visualContainerObjects": {
+      "title": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Gross by distributor type'"
+                }
+              }
+            }
+          }
+        }
+      ]
+    }
+  }
+}

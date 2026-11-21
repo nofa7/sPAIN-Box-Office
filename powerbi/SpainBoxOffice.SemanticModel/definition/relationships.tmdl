@@ -1,0 +1,23 @@
+relationship cb255053-f988-5662-8bfa-cc88c18bb5db
+	fromColumn: fact_weekend_top25.film_id
+	toColumn: dim_film.film_id
+
+relationship cdcbb8a7-0abc-5689-8c6d-3f002be17c44
+	fromColumn: fact_weekend_top25.weekend_start
+	toColumn: dim_date.date
+
+relationship 6ce37f0f-6502-55bd-9e89-3d5b4ca14efa
+	fromColumn: dim_film.distributor
+	toColumn: dim_distributor.distributor
+
+relationship 859766e5-3cf8-5ddd-9f96-6bc70430e51e
+	fromColumn: fact_weekend_spanish.weekend_start
+	toColumn: dim_date.date
+
+relationship 5aeeb943-8507-54c9-b550-e2af40dde868
+	fromColumn: fact_weekend_spanish.distributor
+	toColumn: dim_distributor.distributor
+
+relationship 121fee26-b1d1-581e-98ae-274896c20eb2
+	fromColumn: fact_annual_spanish.distributor
+	toColumn: dim_distributor.distributor

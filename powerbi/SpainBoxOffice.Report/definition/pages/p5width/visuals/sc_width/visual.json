@@ -1,0 +1,126 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.4.0/schema.json",
+  "name": "sc_width",
+  "position": {
+    "x": 24,
+    "y": 400,
+    "z": 7000,
+    "width": 760,
+    "height": 296,
+    "tabOrder": 7000
+  },
+  "visual": {
+    "visualType": "scatterChart",
+    "drillFilterOtherVisuals": true,
+    "query": {
+      "queryState": {
+        "Category": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "dim_film"
+                    }
+                  },
+                  "Property": "title"
+                }
+              },
+              "queryRef": "dim_film.title",
+              "nativeQueryRef": "title"
+            }
+          ]
+        },
+        "X": {
+          "projections": [
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "dim_film"
+                        }
+                      },
+                      "Property": "opening_cinemas"
+                    }
+                  },
+                  "Function": 0
+                }
+              },
+              "queryRef": "Sum(dim_film.opening_cinemas)",
+              "nativeQueryRef": "Sum of opening_cinemas",
+              "displayName": "Opening cinemas"
+            }
+          ]
+        },
+        "Y": {
+          "projections": [
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "dim_film"
+                        }
+                      },
+                      "Property": "total_gross_eur"
+                    }
+                  },
+                  "Function": 0
+                }
+              },
+              "queryRef": "Sum(dim_film.total_gross_eur)",
+              "nativeQueryRef": "Sum of total_gross_eur",
+              "displayName": "Lifetime gross"
+            }
+          ]
+        },
+        "Series": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "dim_film"
+                    }
+                  },
+                  "Property": "origin"
+                }
+              },
+              "queryRef": "dim_film.origin",
+              "nativeQueryRef": "origin"
+            }
+          ]
+        }
+      }
+    },
+    "visualContainerObjects": {
+      "title": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Every film: opening cinemas vs lifetime gross'"
+                }
+              }
+            }
+          }
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,137 @@
+table fact_weekend_spanish
+	lineageTag: 027dff8d-6670-5154-866a-5d18b707bf8e
+
+	column weekend_start
+		dataType: dateTime
+		formatString: yyyy-mm-dd
+		lineageTag: 6ec21cbd-dba3-53e5-b0d6-8f201eb2e8ea
+		summarizeBy: none
+		sourceColumn: weekend_start
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column title
+		dataType: string
+		lineageTag: 3f09cf7d-87d5-5da4-bcf7-0253085f4e10
+		summarizeBy: none
+		sourceColumn: title
+
+		annotation SummarizationSetBy = Automatic
+
+	column distributor
+		dataType: string
+		lineageTag: c24d89c3-de33-572f-9bc3-98c74b0b66ab
+		summarizeBy: none
+		sourceColumn: distributor
+
+		annotation SummarizationSetBy = Automatic
+
+	column rank
+		dataType: int64
+		lineageTag: e235555e-748b-5195-8f60-6772e75b9494
+		summarizeBy: none
+		sourceColumn: rank
+
+		annotation SummarizationSetBy = Automatic
+
+	column weeks_on_release
+		dataType: int64
+		lineageTag: 9877d422-3fcf-59cd-a659-a1439e578363
+		summarizeBy: none
+		sourceColumn: weeks_on_release
+
+		annotation SummarizationSetBy = Automatic
+
+	column cinemas
+		dataType: int64
+		lineageTag: 8a0e950e-cae2-5284-815f-fba7238fa649
+		summarizeBy: none
+		sourceColumn: cinemas
+
+		annotation SummarizationSetBy = Automatic
+
+	column screens
+		dataType: double
+		lineageTag: 71fe73ae-74c0-5c76-b400-7a10781c8721
+		summarizeBy: none
+		sourceColumn: screens
+
+		annotation SummarizationSetBy = Automatic
+
+	column gross_eur
+		dataType: double
+		formatString: #,0
+		lineageTag: 014f1a5c-becb-5fd7-81fc-0dca7ca9764a
+		summarizeBy: sum
+		sourceColumn: gross_eur
+
+		annotation SummarizationSetBy = Automatic
+
+	column admissions
+		dataType: double
+		formatString: #,0
+		lineageTag: 164e2cb4-b3ec-52d3-8da6-1524dfe13fa4
+		summarizeBy: sum
+		sourceColumn: admissions
+
+		annotation SummarizationSetBy = Automatic
+
+	column admissions_imputed
+		dataType: boolean
+		lineageTag: 8ecae02c-2542-5a1b-a28f-9daf9da4fdc0
+		summarizeBy: none
+		sourceColumn: admissions_imputed
+
+		annotation SummarizationSetBy = Automatic
+
+	column gross_cum_eur
+		dataType: int64
+		formatString: #,0
+		lineageTag: 41aac1de-5d6b-5d19-840b-b0833a70e9d0
+		summarizeBy: sum
+		sourceColumn: gross_cum_eur
+
+		annotation SummarizationSetBy = Automatic
+
+	column admissions_cum
+		dataType: int64
+		formatString: #,0
+		lineageTag: c8151610-809b-5326-8db9-97fb15c22fb9
+		summarizeBy: sum
+		sourceColumn: admissions_cum
+
+		annotation SummarizationSetBy = Automatic
+
+	column release_weekend
+		dataType: dateTime
+		formatString: yyyy-mm-dd
+		lineageTag: 2d279139-ae4f-5218-a5a1-71dc5ece504c
+		summarizeBy: none
+		sourceColumn: release_weekend
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column source_file
+		dataType: string
+		isHidden
+		lineageTag: 79238c28-fc43-50e6-a675-b9d9d36262af
+		summarizeBy: none
+		sourceColumn: source_file
+
+		annotation SummarizationSetBy = Automatic
+
+	partition fact_weekend_spanish = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(File.Contents(DataFolder & "fact_weekend_spanish.csv"), [Delimiter = ",", Encoding = 65001, QuoteStyle = QuoteStyle.Csv]),
+				    Promoted = Table.PromoteHeaders(Source, [PromoteAllScalars = true]),
+				    Typed = Table.TransformColumnTypes(Promoted, {{"weekend_start", type date}, {"title", type text}, {"distributor", type text}, {"rank", Int64.Type}, {"weeks_on_release", Int64.Type}, {"cinemas", Int64.Type}, {"screens", type number}, {"gross_eur", type number}, {"admissions", type number}, {"admissions_imputed", type logical}, {"gross_cum_eur", Int64.Type}, {"admissions_cum", Int64.Type}, {"release_weekend", type date}, {"source_file", type text}}, "en-US")
+				in
+				    Typed
+
+	annotation PBI_ResultType = Table

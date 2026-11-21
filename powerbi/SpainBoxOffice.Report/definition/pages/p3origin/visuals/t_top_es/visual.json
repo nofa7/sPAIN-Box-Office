@@ -1,0 +1,135 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.4.0/schema.json",
+  "name": "t_top_es",
+  "position": {
+    "x": 656,
+    "y": 400,
+    "z": 7000,
+    "width": 600,
+    "height": 296,
+    "tabOrder": 7000
+  },
+  "visual": {
+    "visualType": "tableEx",
+    "drillFilterOtherVisuals": true,
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "dim_film"
+                    }
+                  },
+                  "Property": "title"
+                }
+              },
+              "queryRef": "dim_film.title",
+              "nativeQueryRef": "title"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "dim_film"
+                    }
+                  },
+                  "Property": "distributor"
+                }
+              },
+              "queryRef": "dim_film.distributor",
+              "nativeQueryRef": "distributor"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "dim_film"
+                    }
+                  },
+                  "Property": "release_year"
+                }
+              },
+              "queryRef": "dim_film.release_year",
+              "nativeQueryRef": "release_year"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "dim_film"
+                    }
+                  },
+                  "Property": "origin"
+                }
+              },
+              "queryRef": "dim_film.origin",
+              "nativeQueryRef": "origin"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "dim_film"
+                    }
+                  },
+                  "Property": "total_gross_eur"
+                }
+              },
+              "queryRef": "dim_film.total_gross_eur",
+              "nativeQueryRef": "total_gross_eur",
+              "displayName": "Total gross (EUR)"
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "dim_film"
+                  }
+                },
+                "Property": "total_gross_eur"
+              }
+            },
+            "direction": "Descending"
+          }
+        ],
+        "isDefaultSort": false
+      }
+    },
+    "visualContainerObjects": {
+      "title": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Biggest films (filter by origin with the slicer)'"
+                }
+              }
+            }
+          }
+        }
+      ]
+    }
+  }
+}

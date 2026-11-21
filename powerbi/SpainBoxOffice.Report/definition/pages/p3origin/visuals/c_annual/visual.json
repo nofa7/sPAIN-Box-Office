@@ -1,0 +1,78 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.4.0/schema.json",
+  "name": "c_annual",
+  "position": {
+    "x": 24,
+    "y": 260,
+    "z": 6000,
+    "width": 616,
+    "height": 236,
+    "tabOrder": 6000
+  },
+  "visual": {
+    "visualType": "clusteredColumnChart",
+    "drillFilterOtherVisuals": true,
+    "query": {
+      "queryState": {
+        "Category": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "fact_annual_spanish"
+                    }
+                  },
+                  "Property": "year"
+                }
+              },
+              "queryRef": "fact_annual_spanish.year",
+              "nativeQueryRef": "year"
+            }
+          ]
+        },
+        "Y": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "fact_annual_spanish"
+                    }
+                  },
+                  "Property": "Spanish Cinema Gross"
+                }
+              },
+              "queryRef": "fact_annual_spanish.Spanish Cinema Gross",
+              "nativeQueryRef": "Spanish Cinema Gross"
+            }
+          ]
+        }
+      }
+    },
+    "visualContainerObjects": {
+      "title": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Spanish cinema box office 2016-2026 (all Spanish films, ICAA annual)'"
+                }
+              }
+            }
+          }
+        }
+      ]
+    }
+  }
+}
