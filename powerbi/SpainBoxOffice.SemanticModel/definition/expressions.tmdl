@@ -2,3 +2,4 @@ expression DataFolder = "C:\Users\Pedro\Documents\sPAIN Box Office\data\clean\" 
 	lineageTag: 3cd24164-5642-5206-bfff-e4e11d562e8a
 
 	annotation PBI_ResultType = Text
+

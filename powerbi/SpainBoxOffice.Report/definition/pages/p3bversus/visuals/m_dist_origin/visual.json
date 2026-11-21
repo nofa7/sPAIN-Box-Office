@@ -1,37 +1,18 @@
 {
-  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.4.0/schema.json",
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.14.0/schema.json",
   "name": "m_dist_origin",
   "position": {
     "x": 656,
     "y": 410,
     "z": 8000,
-    "width": 600,
     "height": 276,
+    "width": 600,
     "tabOrder": 8000
   },
   "visual": {
     "visualType": "pivotTable",
-    "drillFilterOtherVisuals": true,
     "query": {
       "queryState": {
-        "Rows": {
-          "projections": [
-            {
-              "field": {
-                "Column": {
-                  "Expression": {
-                    "SourceRef": {
-                      "Entity": "dim_distributor"
-                    }
-                  },
-                  "Property": "distributor_type"
-                }
-              },
-              "queryRef": "dim_distributor.distributor_type",
-              "nativeQueryRef": "distributor_type"
-            }
-          ]
-        },
         "Columns": {
           "projections": [
             {
@@ -46,7 +27,27 @@
                 }
               },
               "queryRef": "dim_film.origin",
-              "nativeQueryRef": "origin"
+              "nativeQueryRef": "origin",
+              "active": true
+            }
+          ]
+        },
+        "Rows": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "dim_distributor"
+                    }
+                  },
+                  "Property": "distributor_type"
+                }
+              },
+              "queryRef": "dim_distributor.distributor_type",
+              "nativeQueryRef": "distributor_type",
+              "active": true
             }
           ]
         },
@@ -119,6 +120,7 @@
           }
         }
       ]
-    }
+    },
+    "drillFilterOtherVisuals": true
   }
 }

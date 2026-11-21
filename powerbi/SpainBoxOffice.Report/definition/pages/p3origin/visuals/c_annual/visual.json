@@ -1,17 +1,16 @@
 {
-  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.4.0/schema.json",
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.14.0/schema.json",
   "name": "c_annual",
   "position": {
     "x": 24,
     "y": 260,
     "z": 6000,
-    "width": 616,
     "height": 236,
+    "width": 616,
     "tabOrder": 6000
   },
   "visual": {
     "visualType": "clusteredColumnChart",
-    "drillFilterOtherVisuals": true,
     "query": {
       "queryState": {
         "Category": {
@@ -28,7 +27,8 @@
                 }
               },
               "queryRef": "fact_annual_spanish.year",
-              "nativeQueryRef": "year"
+              "nativeQueryRef": "year",
+              "active": true
             }
           ]
         },
@@ -73,6 +73,7 @@
           }
         }
       ]
-    }
+    },
+    "drillFilterOtherVisuals": true
   }
 }

@@ -1,17 +1,16 @@
 {
-  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.4.0/schema.json",
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.14.0/schema.json",
   "name": "c_season_dem",
   "position": {
     "x": 24,
     "y": 96,
     "z": 5000,
-    "width": 616,
     "height": 290,
+    "width": 616,
     "tabOrder": 5000
   },
   "visual": {
     "visualType": "clusteredColumnChart",
-    "drillFilterOtherVisuals": true,
     "query": {
       "queryState": {
         "Category": {
@@ -28,7 +27,8 @@
                 }
               },
               "queryRef": "dim_date.month",
-              "nativeQueryRef": "month"
+              "nativeQueryRef": "month",
+              "active": true
             }
           ]
         },
@@ -73,6 +73,7 @@
           }
         }
       ]
-    }
+    },
+    "drillFilterOtherVisuals": true
   }
 }

@@ -135,3 +135,4 @@ table fact_weekend_spanish
 				    Typed
 
 	annotation PBI_ResultType = Table
+

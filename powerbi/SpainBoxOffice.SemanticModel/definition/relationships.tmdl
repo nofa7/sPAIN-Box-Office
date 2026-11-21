@@ -21,3 +21,4 @@ relationship 5aeeb943-8507-54c9-b550-e2af40dde868
 relationship 121fee26-b1d1-581e-98ae-274896c20eb2
 	fromColumn: fact_annual_spanish.distributor
 	toColumn: dim_distributor.distributor
+

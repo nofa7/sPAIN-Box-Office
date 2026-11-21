@@ -1,17 +1,16 @@
 {
-  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.4.0/schema.json",
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.14.0/schema.json",
   "name": "c_shares",
   "position": {
     "x": 24,
     "y": 200,
     "z": 6000,
-    "width": 616,
     "height": 270,
+    "width": 616,
     "tabOrder": 6000
   },
   "visual": {
     "visualType": "clusteredColumnChart",
-    "drillFilterOtherVisuals": true,
     "query": {
       "queryState": {
         "Category": {
@@ -29,6 +28,7 @@
               },
               "queryRef": "dim_film.release_year",
               "nativeQueryRef": "release_year",
+              "active": true,
               "displayName": "Release year"
             }
           ]
@@ -88,6 +88,7 @@
           }
         }
       ]
-    }
+    },
+    "drillFilterOtherVisuals": true
   }
 }

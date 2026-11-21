@@ -1,0 +1,100 @@
+{
+  "version": "1.1.0",
+  "diagrams": [
+    {
+      "ordinal": 0,
+      "scrollPosition": {
+        "x": 0,
+        "y": 0
+      },
+      "nodes": [
+        {
+          "location": {
+            "x": 721.05648649701232,
+            "y": 553.75527302751493
+          },
+          "nodeIndex": "dim_date",
+          "nodeLineageTag": "a7beb9a1-a231-563f-b795-58920d2c3a66",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 267.46500104283382,
+            "y": 302.83232145854925
+          },
+          "nodeIndex": "dim_distributor",
+          "nodeLineageTag": "1324d52b-2e49-5818-91fa-c7a286b0ae19",
+          "size": {
+            "height": 128,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 50,
+            "y": 481.69460660401637
+          },
+          "nodeIndex": "dim_film",
+          "nodeLineageTag": "3db4b2f5-136f-5b48-968e-f2288d843c3d",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 100.77651842931107,
+            "y": -50
+          },
+          "nodeIndex": "fact_annual_spanish",
+          "nodeLineageTag": "6ee878c9-922b-5fa9-ba26-932717c74fff",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 574.45331671016379,
+            "y": 200.04838120715772
+          },
+          "nodeIndex": "fact_weekend_spanish",
+          "nodeLineageTag": "027dff8d-6670-5154-866a-5d18b707bf8e",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 434.69916360123318,
+            "y": 553.88424298196458
+          },
+          "nodeIndex": "fact_weekend_top25",
+          "nodeLineageTag": "9450a407-61b5-50fe-bbe3-859d954a93ba",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 0
+        }
+      ],
+      "name": "All tables",
+      "zoomValue": 100,
+      "pinKeyFieldsToTop": false,
+      "showExtraHeaderInfo": false,
+      "hideKeyFieldsWhenCollapsed": false,
+      "tablesLocked": false
+    }
+  ],
+  "selectedDiagram": "All tables",
+  "defaultDiagram": "All tables"
+}

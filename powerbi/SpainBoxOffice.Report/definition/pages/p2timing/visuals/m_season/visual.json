@@ -1,37 +1,18 @@
 {
-  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.4.0/schema.json",
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.14.0/schema.json",
   "name": "m_season",
   "position": {
     "x": 24,
     "y": 400,
     "z": 7000,
-    "width": 760,
     "height": 296,
+    "width": 760,
     "tabOrder": 7000
   },
   "visual": {
     "visualType": "pivotTable",
-    "drillFilterOtherVisuals": true,
     "query": {
       "queryState": {
-        "Rows": {
-          "projections": [
-            {
-              "field": {
-                "Column": {
-                  "Expression": {
-                    "SourceRef": {
-                      "Entity": "dim_film"
-                    }
-                  },
-                  "Property": "release_season"
-                }
-              },
-              "queryRef": "dim_film.release_season",
-              "nativeQueryRef": "release_season"
-            }
-          ]
-        },
         "Columns": {
           "projections": [
             {
@@ -46,7 +27,27 @@
                 }
               },
               "queryRef": "dim_film.origin",
-              "nativeQueryRef": "origin"
+              "nativeQueryRef": "origin",
+              "active": true
+            }
+          ]
+        },
+        "Rows": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "dim_film"
+                    }
+                  },
+                  "Property": "release_season"
+                }
+              },
+              "queryRef": "dim_film.release_season",
+              "nativeQueryRef": "release_season",
+              "active": true
             }
           ]
         },
@@ -133,6 +134,7 @@
           }
         }
       ]
-    }
+    },
+    "drillFilterOtherVisuals": true
   }
 }

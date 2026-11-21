@@ -1,17 +1,16 @@
 {
-  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.4.0/schema.json",
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.14.0/schema.json",
   "name": "sc_width",
   "position": {
     "x": 24,
     "y": 400,
     "z": 7000,
-    "width": 760,
     "height": 296,
+    "width": 760,
     "tabOrder": 7000
   },
   "visual": {
     "visualType": "scatterChart",
-    "drillFilterOtherVisuals": true,
     "query": {
       "queryState": {
         "Category": {
@@ -28,7 +27,26 @@
                 }
               },
               "queryRef": "dim_film.title",
-              "nativeQueryRef": "title"
+              "nativeQueryRef": "title",
+              "active": true
+            }
+          ]
+        },
+        "Series": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "dim_film"
+                    }
+                  },
+                  "Property": "origin"
+                }
+              },
+              "queryRef": "dim_film.origin",
+              "nativeQueryRef": "origin"
             }
           ]
         },
@@ -52,6 +70,7 @@
               },
               "queryRef": "Sum(dim_film.opening_cinemas)",
               "nativeQueryRef": "Sum of opening_cinemas",
+              "active": true,
               "displayName": "Opening cinemas"
             }
           ]
@@ -79,24 +98,6 @@
               "displayName": "Lifetime gross"
             }
           ]
-        },
-        "Series": {
-          "projections": [
-            {
-              "field": {
-                "Column": {
-                  "Expression": {
-                    "SourceRef": {
-                      "Entity": "dim_film"
-                    }
-                  },
-                  "Property": "origin"
-                }
-              },
-              "queryRef": "dim_film.origin",
-              "nativeQueryRef": "origin"
-            }
-          ]
         }
       }
     },
@@ -121,6 +122,7 @@
           }
         }
       ]
-    }
+    },
+    "drillFilterOtherVisuals": true
   }
 }

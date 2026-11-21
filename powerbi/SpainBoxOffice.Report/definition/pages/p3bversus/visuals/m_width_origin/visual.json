@@ -1,19 +1,37 @@
 {
-  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.4.0/schema.json",
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.14.0/schema.json",
   "name": "m_width_origin",
   "position": {
     "x": 656,
     "y": 96,
     "z": 7000,
-    "width": 600,
     "height": 300,
+    "width": 600,
     "tabOrder": 7000
   },
   "visual": {
     "visualType": "pivotTable",
-    "drillFilterOtherVisuals": true,
     "query": {
       "queryState": {
+        "Columns": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "dim_film"
+                    }
+                  },
+                  "Property": "origin"
+                }
+              },
+              "queryRef": "dim_film.origin",
+              "nativeQueryRef": "origin",
+              "active": true
+            }
+          ]
+        },
         "Rows": {
           "projections": [
             {
@@ -29,25 +47,8 @@
               },
               "queryRef": "dim_film.opening_cinemas_band",
               "nativeQueryRef": "opening_cinemas_band",
+              "active": true,
               "displayName": "Opening width (cinemas)"
-            }
-          ]
-        },
-        "Columns": {
-          "projections": [
-            {
-              "field": {
-                "Column": {
-                  "Expression": {
-                    "SourceRef": {
-                      "Entity": "dim_film"
-                    }
-                  },
-                  "Property": "origin"
-                }
-              },
-              "queryRef": "dim_film.origin",
-              "nativeQueryRef": "origin"
             }
           ]
         },
@@ -120,6 +121,7 @@
           }
         }
       ]
-    }
+    },
+    "drillFilterOtherVisuals": true
   }
 }

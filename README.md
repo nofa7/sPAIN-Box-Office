@@ -4,6 +4,8 @@
 
 *Google Data Analytics – Case Study 3 (own case study). Tools: Python (pdfplumber, pandas), SQL (DuckDB), Power BI.*
 
+![Power BI dashboard: market overview](img/dashboard_market_overview.png)
+
 ## 1. Business task (Ask)
 
 **Client:** an independent Spanish film distributor planning its release slate for the next two years.
@@ -114,6 +116,24 @@ Power BI project: `powerbi/SpainBoxOffice.pbip`. Open it in Power BI Desktop and
 | 3b. Spanish vs Foreign | Share of releases vs share of gross by year, results at equal opening width, majors vs independents by origin |
 | 4. Distributors | Distributor league table, type share by year, hit rate by distributor |
 | 5. Release Strategy | Opening width vs gross, hit rate and legs by width band, film-level scatter |
+
+**1. Market Overview**
+![Market overview](img/dashboard_market_overview.png)
+
+**2. Release Timing**
+![Release timing](img/dashboard_release_timing.png)
+
+**3. Spanish Cinema**
+![Spanish cinema](img/dashboard_spanish_cinema.png)
+
+**3b. Spanish vs Foreign**
+![Spanish vs foreign releases](img/dashboard_spanish_vs_foreign.png)
+
+**4. Distributors**
+![Distributors](img/dashboard_distributors.png)
+
+**5. Release Strategy**
+![Release strategy](img/dashboard_release_strategy.png)
 
 The model has 26 DAX measures, including hit rate, Spanish share of releases and of gross, median legs, week-over-week drop, top-10 concentration and YoY %. Visual theme: Spanish red and navy.
 

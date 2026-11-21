@@ -116,3 +116,4 @@ table fact_annual_spanish
 				    Typed
 
 	annotation PBI_ResultType = Table
+

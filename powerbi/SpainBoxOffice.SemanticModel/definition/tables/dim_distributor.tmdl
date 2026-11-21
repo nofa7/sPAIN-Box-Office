@@ -28,3 +28,4 @@ table dim_distributor
 				    Typed
 
 	annotation PBI_ResultType = Table
+

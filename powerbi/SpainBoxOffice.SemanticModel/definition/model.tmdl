@@ -10,9 +10,14 @@ annotation __PBI_TimeIntelligenceEnabled = 0
 
 annotation PBI_QueryOrder = ["DataFolder", "dim_film", "dim_distributor", "dim_date", "fact_weekend_top25", "fact_weekend_spanish", "fact_annual_spanish"]
 
+annotation PBI_ProTooling = ["DevMode"]
+
 ref table dim_film
 ref table dim_distributor
 ref table dim_date
 ref table fact_weekend_top25
 ref table fact_weekend_spanish
 ref table fact_annual_spanish
+
+ref cultureInfo en-US
+

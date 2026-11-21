@@ -1,17 +1,16 @@
 {
-  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.4.0/schema.json",
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.14.0/schema.json",
   "name": "c_decay",
   "position": {
     "x": 656,
     "y": 96,
     "z": 5000,
-    "width": 600,
     "height": 290,
+    "width": 600,
     "tabOrder": 5000
   },
   "visual": {
     "visualType": "lineChart",
-    "drillFilterOtherVisuals": true,
     "query": {
       "queryState": {
         "Category": {
@@ -28,25 +27,8 @@
                 }
               },
               "queryRef": "fact_weekend_top25.weeks_on_release",
-              "nativeQueryRef": "weeks_on_release"
-            }
-          ]
-        },
-        "Y": {
-          "projections": [
-            {
-              "field": {
-                "Measure": {
-                  "Expression": {
-                    "SourceRef": {
-                      "Entity": "fact_weekend_top25"
-                    }
-                  },
-                  "Property": "Median Week-over-Week Change"
-                }
-              },
-              "queryRef": "fact_weekend_top25.Median Week-over-Week Change",
-              "nativeQueryRef": "Median Week-over-Week Change"
+              "nativeQueryRef": "weeks_on_release",
+              "active": true
             }
           ]
         },
@@ -65,6 +47,24 @@
               },
               "queryRef": "dim_film.origin",
               "nativeQueryRef": "origin"
+            }
+          ]
+        },
+        "Y": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "fact_weekend_top25"
+                    }
+                  },
+                  "Property": "Median Week-over-Week Change"
+                }
+              },
+              "queryRef": "fact_weekend_top25.Median Week-over-Week Change",
+              "nativeQueryRef": "Median Week-over-Week Change"
             }
           ]
         }
@@ -91,6 +91,7 @@
           }
         }
       ]
-    }
+    },
+    "drillFilterOtherVisuals": true
   }
 }

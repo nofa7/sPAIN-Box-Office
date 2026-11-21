@@ -222,3 +222,4 @@ table fact_weekend_top25
 				    Typed
 
 	annotation PBI_ResultType = Table
+

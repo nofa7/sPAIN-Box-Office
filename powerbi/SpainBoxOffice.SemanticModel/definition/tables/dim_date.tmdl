@@ -1,11 +1,11 @@
 table dim_date
-	dataCategory: Time
 	lineageTag: a7beb9a1-a231-563f-b795-58920d2c3a66
+	dataCategory: Time
 
 	column date
 		dataType: dateTime
-		formatString: yyyy-mm-dd
 		isKey
+		formatString: yyyy-mm-dd
 		lineageTag: 272c6036-528c-5c7a-a53c-953d7e938f66
 		summarizeBy: none
 		sourceColumn: date
@@ -106,3 +106,4 @@ table dim_date
 				    Typed
 
 	annotation PBI_ResultType = Table
+

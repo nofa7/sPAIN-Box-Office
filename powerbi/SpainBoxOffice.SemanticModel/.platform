@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "SemanticModel",
+    "displayName": "SpainBoxOffice"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "48c1ac2e-84ac-45f4-b390-189c208c409c"
+  }
+}

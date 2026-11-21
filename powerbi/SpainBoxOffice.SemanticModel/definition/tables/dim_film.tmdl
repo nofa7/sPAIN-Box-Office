@@ -40,6 +40,12 @@ table dim_film
 		displayFolder: KPIs
 		lineageTag: b1e0035d-b5d5-5fe1-a538-8c9a0844c1c5
 
+	/// Median opening gross per cinema
+	measure 'Median Opening per Cinema' = MEDIANX(FILTER(dim_film, dim_film[opened_in_top25] = TRUE() && dim_film[is_rerelease] = FALSE() && NOT ISBLANK(dim_film[opening_per_cinema_eur])), dim_film[opening_per_cinema_eur])
+		formatString: €#,0
+		displayFolder: KPIs
+		lineageTag: f5817ab9-1a79-5fb5-aeb9-d0723f6525a9
+
 	/// Share of new releases that are Spanish films
 	measure 'Spanish Share of Releases' =
 			VAR _all = CALCULATE([New Releases], REMOVEFILTERS(dim_film[origin]))
@@ -57,12 +63,6 @@ table dim_film
 		formatString: 0.0%
 		displayFolder: KPIs
 		lineageTag: b5ed6abf-d339-5866-bc2c-d80fb89434fc
-
-	/// Median opening gross per cinema
-	measure 'Median Opening per Cinema' = MEDIANX(FILTER(dim_film, dim_film[opened_in_top25] = TRUE() && dim_film[is_rerelease] = FALSE() && NOT ISBLANK(dim_film[opening_per_cinema_eur])), dim_film[opening_per_cinema_eur])
-		formatString: €#,0
-		displayFolder: KPIs
-		lineageTag: f5817ab9-1a79-5fb5-aeb9-d0723f6525a9
 
 	column film_id
 		dataType: string
@@ -315,3 +315,4 @@ table dim_film
 				    Typed
 
 	annotation PBI_ResultType = Table
+

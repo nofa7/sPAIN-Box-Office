@@ -4,6 +4,8 @@
 
 *Google Data Analytics – Caso práctico 3 (caso propio). Herramientas: Python (pdfplumber, pandas), SQL (DuckDB), Power BI.*
 
+![Dashboard de Power BI: visión general del mercado](img/dashboard_market_overview.png)
+
 ## 1. Objetivo de negocio (Preguntar)
 
 **Cliente:** una distribuidora de cine independiente española que planifica sus estrenos de los dos próximos años.
@@ -112,6 +114,24 @@ Proyecto de Power BI: `powerbi/SpainBoxOffice.pbip`. Ábrelo en Power BI Desktop
 | 3b. Spanish vs Foreign | Cuota de estrenos frente a cuota de recaudación por año, resultados con la misma amplitud de estreno, majors frente a independientes según el origen |
 | 4. Distributors | Clasificación de distribuidoras, cuota por tipo y año, tasa de éxito por distribuidora |
 | 5. Release Strategy | Amplitud del estreno frente a recaudación, tasa de éxito y recorrido por tramo de cines, dispersión por película |
+
+**1. Visión general del mercado**
+![Visión general del mercado](img/dashboard_market_overview.png)
+
+**2. Calendario de estrenos**
+![Calendario de estrenos](img/dashboard_release_timing.png)
+
+**3. Cine español**
+![Cine español](img/dashboard_spanish_cinema.png)
+
+**3b. Español frente a extranjero**
+![Estrenos españoles frente a extranjeros](img/dashboard_spanish_vs_foreign.png)
+
+**4. Distribuidoras**
+![Distribuidoras](img/dashboard_distributors.png)
+
+**5. Estrategia de estreno**
+![Estrategia de estreno](img/dashboard_release_strategy.png)
 
 El modelo tiene 26 medidas DAX, entre ellas tasa de éxito, cuota española de estrenos y de recaudación, recorrido mediano, caída semanal, concentración del top 10 y variación interanual. Tema visual: rojo y azul marino.
 

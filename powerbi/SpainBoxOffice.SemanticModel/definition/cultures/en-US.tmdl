@@ -1,0 +1,294 @@
+cultureInfo en-US
+
+	linguisticMetadata =
+			{
+			  "Version": "2.0.0",
+			  "Language": "en-US",
+			  "Entities": {
+			    "fact_weekend_top25.total_gross": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "fact_weekend_top25",
+			          "ConceptualProperty": "Total Gross"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Box office (Top 25)": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "fact_weekend_top25.total_admissions": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "fact_weekend_top25",
+			          "ConceptualProperty": "Total Admissions"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Admissions": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "fact_weekend_top25.avg_ticket_price": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "fact_weekend_top25",
+			          "ConceptualProperty": "Avg Ticket Price"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Avg ticket": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "fact_weekend_top25.spanish_share": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "fact_weekend_top25",
+			          "ConceptualProperty": "Spanish Share"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Spanish films share": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        },
+			        {
+			          "Spanish share of Top 25 gross": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "fact_weekend_top25.independent_share": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "fact_weekend_top25",
+			          "ConceptualProperty": "Independent Share"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Independent distributors share": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "dim_date.year": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "dim_date",
+			          "ConceptualProperty": "year"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Year": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "dim_film.origin": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "dim_film",
+			          "ConceptualProperty": "origin"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Film origin": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "dim_film.release_year": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "dim_film",
+			          "ConceptualProperty": "release_year"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Release year": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "dim_film.total_gross_eur": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "dim_film",
+			          "ConceptualProperty": "total_gross_eur"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Total gross (EUR)": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "dim_film.spanish_share_of_release_gross": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "dim_film",
+			          "ConceptualProperty": "Spanish Share of Release Gross"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Spanish share of release gross": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "dim_film.spanish_share_of_releases": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "dim_film",
+			          "ConceptualProperty": "Spanish Share of Releases"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Spanish share of new releases": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "dim_film.opening_cinemas_band": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "dim_film",
+			          "ConceptualProperty": "opening_cinemas_band"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Opening width (cinemas)": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "dim_distributor.distributor_type": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "dim_distributor",
+			          "ConceptualProperty": "distributor_type"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Distributor type": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    }
+			  }
+			}
+		contentType: json
+
